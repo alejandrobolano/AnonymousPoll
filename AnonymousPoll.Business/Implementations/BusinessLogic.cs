@@ -49,6 +49,7 @@ namespace AnonymousPoll.Business.Implementations
                 catch (Exception exception)
                 {
                     Log.Error("\nAn uncontrollable error has occurred:" + exception.Message, exception);
+                    throw;
                 }
 
             }
@@ -57,7 +58,7 @@ namespace AnonymousPoll.Business.Implementations
 
         public StringBuilder GetNamesAppended(List<string> names)
         {
-            if (names.Count == 0)
+            if (names == null || names.Count == 0)
             {
                 return new StringBuilder("NONE");
             }
